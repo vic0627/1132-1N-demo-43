@@ -5,7 +5,7 @@ const $lib = {
   userInput: $('.input-number'),
   addBtn: $('.btn-add'),
   subtractBtn: $('.btn-subtract'),
-  // multiplyBtn: $('.btn-multiply'),
+  multiplyBtn: $('.btn-multiply'),
   divideBtn: $('.btn-divide'),
   currentResultOutput: $('.current-result'),
   currentCalculationOutput: $('.current-calculation'),
@@ -32,7 +32,7 @@ const createOperator = (cb) => () => {
 const eLib = {
   addBtn: (o1, o2) => [o1 + o2, `${o1} + ${o2}`],
   subtractBtn: (o1, o2) => [o1 - o2, `${o1} - ${o2}`],
-  // multiplyBtn: (o1, o2) => [(o1 * o2).toFixed(2), `${o1} * ${o2}`],
+  multiplyBtn: (o1, o2) => [(o1 * o2).toFixed(2), `${o1} * ${o2}`],
   divideBtn: (o1, o2) => (o2 ? [(o1 / o2).toFixed(2), `${o1} / ${o2}`] : [o1, 'cannot divide by 0']),
 }
 

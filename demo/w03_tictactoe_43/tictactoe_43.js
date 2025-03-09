@@ -1,16 +1,17 @@
 const o = 'o'
 const x = 'x'
 const tie = 'tie'
-const ALL_STATES = [o, x, tie]
+const ALL_STATES = [o, x, tie, 'disabled']
 let turn = 0
 let done = false
 
 const $ = (e) => document.querySelector(e)
-const $$ = (e) => document.querySelectorAll(e)
+const $$ = (e) => [...document.querySelectorAll(e)]
 const l = console.log
 
 const container = $('.container')
-const alert = $('.alert')
+const alertBox = $('.alert')
+const board = $('.board')
 const allLi = $$('.board li')
 const resetBtn = $('.reset')
 
@@ -32,28 +33,43 @@ const checkWin = (p) => {
   return false
 }
 
-console.log('checkWin(o)', checkWin(o))
-console.log('checkWin(x)', checkWin(x))
-
 const ggMessage = (p) => {
   if (!ALL_STATES.includes(p)) return
   const addClass = (e) => e.classList.add(p)
   p === tie || addClass(container)
-  addClass(alert)
-  alert.textContent = p === tie ? tie : `player ${p} wins`
+  addClass(alertBox)
+  alertBox.textContent = p === tie ? tie : `player ${p} wins`
 }
-
-ggMessage(tie)
 
 const reset = () => {
   const removeClass = (e) => e.classList.remove(...ALL_STATES)
   removeClass(container)
-  removeClass(alert)
-  alert.textContent = ''
+  removeClass(alertBox)
+  alertBox.textContent = ''
   allLi.forEach((node) => {
     removeClass(node)
     node.textContent = '+'
   })
+  done = false
+  turn = 0
 }
 
 resetBtn.addEventListener('click', reset)
+
+const go = (e, p, txt) => {
+  e.textContent = txt
+  e.classList.add(p, 'disabled')
+  if (checkWin(p)) {
+    ggMessage(p)
+    done = true
+  }
+}
+
+board.addEventListener('click', ({ target: e }) => {
+  if (!allLi.includes(e) || done) return
+  if (e.classList.contains('disabled')) return alert('already filled')
+  if (!(turn % 2)) go(e, o, o)
+  else if (turn % 2) go (e, x ,x)
+  if (!done && turn < 8) turn++
+  else if (!done && turn >= 8) done = true, ggMessage(tie)
+})

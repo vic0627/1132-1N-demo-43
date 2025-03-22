@@ -1,0 +1,28 @@
+{
+  "name": "1132-1n-demo-43",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "demo/w05_basics_43/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vic0627/1132-1N-demo-43.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/vic0627/1132-1N-demo-43/issues"
+  },
+  "homepage": "https://github.com/vic0627/1132-1N-demo-43#readme",
+  "devDependencies": {
+    "nx": "20.6.2"
+  },
+  "nx": {}
+}

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "workspaces": [
-    "demo/w05_basics_43/*"
+    "demo/w05_basics_43/*",
+    "demo/w06_prep_tests_43/*"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
